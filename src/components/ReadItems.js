@@ -32,7 +32,7 @@ class ReadItems extends React.Component {
     	const long = l && l.value;
 
     	return (<div><h1>My stored strings:</h1>
-    			 <ShowItems long={long || 2} drizzle={this.props.drizzle} drizzleState={this.props.drizzleState}/></div>) ;
+    			 <ShowItems long={long} drizzle={this.props.drizzle} drizzleState={this.props.drizzleState}/></div>) ;
     	
 		}
 }

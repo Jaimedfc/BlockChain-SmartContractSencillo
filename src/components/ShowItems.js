@@ -4,17 +4,17 @@ class ShowItems extends React.Component {
 
 
 
-	state = { dataKey: null};
+	state = { dataKey: []};
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		
-        const l1 = prevProps.long;
+        const l1 = prevProps.long || 0;
         const l2 = this.props.long;
         const { drizzle } = this.props;
         const contract = drizzle.contracts.Factory;
-        var dataKey = [];
+        var dataKey = this.state.dataKey;
         if (l1 < l2) {
-            for (var i=0; i<l2; i++){
+            for (var i=l1; i<l2; i++){
                 dataKey[i] = contract.methods["items"].cacheCall(i);
             }
             this.setState({ dataKey });
