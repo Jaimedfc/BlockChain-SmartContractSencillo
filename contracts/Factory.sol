@@ -1,21 +1,41 @@
 pragma solidity ^0.5.0;
+import './Item.sol';
 
 
 contract Factory {
-  string[] public items = ["Hola","Adios"];
-  event Tic(string msg, uint);
+  
 
-  function set(string memory x) public{
+  address[] public addrs;
+ 
 
-  	items.push(x);
-  	emit Tic("Actualizado",items.length);
+  function createItem(string memory value) public{
 
+  	Item newItem = new Item(value);
+  	addrs.push(address(newItem));
 
   }
 
-  function long() public view returns (uint){
+  function setItem(string memory value, address addr) public{
 
-  	return items.length;
+  	Item itemInstance = Item(addr);
+  	itemInstance.setGood(value);
   }
+
+  function getItem( address addr) view public returns (string memory){
+
+
+  	Item itemInstance = Item(addr);
+  	return itemInstance.good();
+  }
+
+  function getLength() view public returns (uint){
+
+  	return addrs.length;
+  }
+  
+
+
 
 }
+
+

@@ -9,6 +9,8 @@ import drizzle from "./drizzle";
 
 import {DrizzleContext} from "drizzle-react";
 
-ReactDom.render(<App drizzle={drizzle} />,
+ReactDom.render(<DrizzleContext.Provider drizzle={drizzle}>
+	<App />
+	</DrizzleContext.Provider>,
 	 document.getElementById("root")
 );
